@@ -12,18 +12,18 @@ export default function Form() {
         <h1 className="my-4">Qual período quer treinar?</h1>
         <hr />
         <div className="flex gap-4 my-4">
-          <input type="radio" name="radio" />
-          <h2>Manhã 06:00 às 12:00</h2>
+          <input type="radio" name="radio" id="manha" />
+          <label htmlFor="manha">Manhã 06:00 às 12:00</label>
         </div>
         <hr />
         <div className="flex gap-4 my-4">
-          <input type="radio" name="radio" />
-          <h2>Tarde 12:01 às 18:00</h2>
+          <input type="radio" name="radio" id="tarde" />
+          <label htmlFor="tarde">Tarde 12:01 às 18:00</label>
         </div>
         <hr />
         <div className="flex gap-4 my-4">
-          <input type="radio" name="radio" />
-          <h2>Noite 18:01 às 23:00</h2>
+          <input type="radio" name="radio" id="noite" />
+          <label htmlFor="noite">Noite 18:01 às 23:00</label>
         </div>
         <hr />
         <div className="flex gap-4 my-4">

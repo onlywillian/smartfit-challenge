@@ -4,7 +4,7 @@ import logo from "@/public/logo.svg";
 export default function Header() {
   return (
     <div>
-      <div className="bg-black w-screen h-20 flex items-center justify-center">
+      <div className="bg-black w-full h-20 flex items-center justify-center">
         <Image src={logo} alt="Logo"></Image>
       </div>
       <div className="p-4">
