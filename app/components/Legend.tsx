@@ -12,7 +12,7 @@ import fbLockroom from "@/public/images/forbidden-lockerroom.png";
 export default function Legend() {
   return (
     <div className="p-4">
-      <div className="bg-zinc-100 rounded-md p-4 flex flex-col items-center gap-8">
+      <div className="bg-zinc-100 rounded-md p-4 flex lg:flex-row flex-col items-center justify-center gap-8">
         <div>
           <h2 className="font-bold text-center text-xl ">Máscara</h2>
           <div className="flex gap-8">

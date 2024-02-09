@@ -4,13 +4,18 @@ import Legend from "./components/Legend";
 import Footer from "./components/Footer";
 import List from "./components/List";
 
-export default function Home() {
+export default async function Home() {
+  const response = await fetch(
+    "https://test-frontend-developer.s3.amazonaws.com/data/locations.json"
+  );
+  const data = await response.json();
+
   return (
     <main>
       <Header />
-      <Form />
+      <Form total={data.total} />
       <Legend />
-      <List />
+      <List data={data} />
       <Footer />
     </main>
   );

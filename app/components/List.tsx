@@ -1,16 +1,20 @@
+"use client";
+
+import { useState } from "react";
 import ListItem from "./ListItem";
 
-export default async function List() {
-  const response = await fetch(
-    "https://test-frontend-developer.s3.amazonaws.com/data/locations.json"
-  );
-  const data = await response.json();
+export default function List({ data }: any) {
+  const [flagOfClosedUnits, setFlagOfClosedUnits] = useState(false);
 
   return (
-    <div className="flex flex-col gap-4 p-4">
-      {data.locations.map((location: any) => (
-        <ListItem location={location} />
-      ))}
+    <div className="lg:grid lg:grid-cols-3 flex flex-col gap-4 p-4">
+      {flagOfClosedUnits
+        ? data.locations.map((location: any) => (
+            <ListItem location={location} />
+          ))
+        : data.locations
+            .filter((location: any) => location.opened == true)
+            .map((location: any) => <ListItem location={location} />)}
     </div>
   );
 }
