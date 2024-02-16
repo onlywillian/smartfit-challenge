@@ -95,7 +95,7 @@ export default function ListItem({ location }: any) {
           </div>
           <div className="flex gap-8">
             {location.schedules.map((schedule: any) => (
-              <div>
+              <div key={Math.random()}>
                 <h1 className="font-bold text-xl">{schedule.weekdays}</h1>
                 <p>{schedule.hour}</p>
               </div>

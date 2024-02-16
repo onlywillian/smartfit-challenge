@@ -1,12 +1,24 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import iconHour from "@/public/images/icon-hour.png";
 
-export default function Form({ total }: any) {
-  function handleFormSubmit(e: any) {
+export default function Form() {
+  const router = useRouter();
+
+  function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log(e);
+
+    const elementsArray = Array.from(e.currentTarget.elements);
+    const period = elementsArray.filter(
+      (element: any, index) => element.checked === true && index < 3
+    ) as HTMLInputElement[];
+
+    const closedUnits = (e.currentTarget.elements[3] as HTMLInputElement)
+      .checked;
+
+    router.replace(`?closedUnits=${closedUnits}&period=${period[0].value}`);
   }
 
   return (
@@ -21,35 +33,37 @@ export default function Form({ total }: any) {
         </div>
         <h1 className="my-4 text-xl">Qual período quer treinar?</h1>
         <hr />
-        <div className="flex gap-4 my-4">
-          <input type="radio" name="radio" id="manha" />
-          <label htmlFor="manha">Manhã 06:00 às 12:00</label>
-        </div>
+        <label className="flex gap-4 my-4">
+          <input type="radio" name="radio" value="manha" />
+          Manhã 06:00 às 12:00
+        </label>
         <hr />
-        <div className="flex gap-4 my-4">
-          <input type="radio" name="radio" id="tarde" />
-          <label htmlFor="tarde">Tarde 12:01 às 18:00</label>
-        </div>
+        <label className="flex gap-4 my-4">
+          <input type="radio" name="radio" value="tarde" />
+          Tarde 12:01 às 18:00
+        </label>
         <hr />
-        <div className="flex gap-4 my-4">
-          <input type="radio" name="radio" id="noite" />
-          <label htmlFor="noite">Noite 18:01 às 23:00</label>
-        </div>
+        <label className="flex gap-4 my-4">
+          <input type="radio" name="radio" value="noite" />
+          Noite 18:01 às 23:00
+        </label>
 
         <hr />
 
         <div className="flex flex-col items-center">
-          <div className="flex gap-4 my-4">
+          <label className="flex gap-4 my-4">
             <input type="checkbox" />
             <h2>Exibir unidades fechadas</h2>
-          </div>
-          <h2>Resultados encontrados: {total}</h2>
+          </label>
+          <h2>Resultados encontrados: {}</h2>
 
           <div className="flex flex-col gap-4 mt-4 lg:flex-row">
             <button className="bg-yellow h-16 w-56 font-bold">
               ENCONTRAR UNIDADE
             </button>
-            <button className="h-16 w-56 font-bold border">LIMPAR</button>
+            <button className="h-16 w-56 font-bold border" type="reset">
+              LIMPAR
+            </button>
           </div>
         </div>
       </form>
